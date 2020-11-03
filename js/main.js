@@ -53,6 +53,16 @@ var paginationNewElement = document.getElementById('pagination-ul')
 // Get Pagination Items 
 var paginationBullets = Array.from(document.querySelectorAll('#pagination-ul li'));
 
+// Loop through pagination bullets
+for (var i=0; i < paginationBullets.length; i++ ){
+
+    paginationBullets[i].onclick = function(){
+        currentSlide = parseInt(this.getAttribute('data-index'));
+
+        theChecker();
+    }
+}
+
 
 // Trigger The Checker Function
 theChecker();
@@ -64,12 +74,28 @@ theChecker();
 
 // Previous slide function
 function prevSlide(){
-    console.log('previous');
+    
+    if ( prevButton.classList.contains('disabled')){
+        return false
+    }
+    else {
+        currentSlide--;
+
+        theChecker();
+    }
 }
 
 // Next slide function
 function nextSlide(){
-    console.log('next');
+    
+    if ( nextButton.classList.contains('disabled')){
+        return false
+    }
+    else {
+        currentSlide++;
+
+        theChecker();
+    }
 }
 
 
